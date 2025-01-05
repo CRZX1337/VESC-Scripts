@@ -7,6 +7,12 @@ This repository provides Lisp scripts to extend the capabilities of VESC motor c
 
 Achieve seamless communication between the VESC and the original Xiaomi/Ninebot dashboard. This allows for the display of crucial information such as speed, battery level, riding mode, and support with the Scooter Hacking Utility App!
 
+<h2 align="center" >FEATURES</h2>
+
+- Cruise Control. (WIP)
+- Lock/Unlock with SHU. (WIP)
+- Automatic Shutdown if x-Minutes Standing. (WIP)
+
 <h2 align="center" >CUSTOMIZABLE FEATURES</h2>
 
 - Eco modes for extended range.
@@ -25,3 +31,16 @@ Modifying your VESC and scooter firmware may void warranties and could potential
  <h2 align="center" >CONTRIBUTING</h2>
  
 Contributions to this project are welcome! Please refer to the Contributing Guidelines for more information.
+
+
+
+
+
+
+
+
+
+
+
+
+
