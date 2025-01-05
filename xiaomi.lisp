@@ -22,13 +22,13 @@
 
 ; Secret Mode Configurations
 (def secret-enabled 1)
-(def secret-eco-speed (/ 27 3.6))
+(def secret-eco-speed (/ 47 3.6))
 (def secret-eco-current 0.8)
-(def secret-eco-watts 1200)
+(def secret-eco-watts 3000)
 (def secret-eco-fw 0)
-(def secret-drive-speed (/ 47 3.6))
+(def secret-drive-speed (/ 62 3.6))
 (def secret-drive-current 0.9)
-(def secret-drive-watts 1500)
+(def secret-drive-watts 4000)
 (def secret-drive-fw 0)
 (def secret-sport-speed (/ 1000 3.6))
 (def secret-sport-current 1.0)
@@ -41,10 +41,6 @@
 (def shu-unlock-cmd 0x7E)
 (def shu-status-cmd 0x01)
 
-; Import VESC Library
-(import "pkg@://vesc_packages/lib_code_server/code_server.vescpkg" 'code-server)
-(read-eval-program code-server)
-
 ; Xiaomi Protocol Constants
 (def xiaomi-header 0x55AA)
 (def xiaomi-tail 0x0A)
@@ -56,6 +52,10 @@
 (gpio-configure 'pin-rx 'pin-mode-in-pu)
 (def xiaomi-tx-buf (array-create 64))
 (def xiaomi-rx-buf (array-create 64))
+
+; Import VESC Library
+(import "pkg@://vesc_packages/lib_code_server/code_server.vescpkg" 'code-server)
+(read-eval-program code-server)
 
 ; State Variables
 (def presstime (systime))
