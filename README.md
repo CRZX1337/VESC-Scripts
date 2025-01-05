@@ -1,3 +1,5 @@
+<h1 align="center" id="title">VESC Scripts</h1>
+
 Enhanced VESC Functionality for Xiaomi and Ninebot Scooters via Lisp Scripting
 This repository provides Lisp scripts to extend the capabilities of VESC motor controllers when used with Xiaomi and Ninebot electric scooters. These scripts enable advanced customization and integration features beyond the standard VESC firmware.
 
