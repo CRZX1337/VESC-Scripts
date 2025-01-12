@@ -32,6 +32,10 @@ Modifying your VESC and scooter firmware may void warranties and could potential
  
 Contributions to this project are welcome! Please refer to the Contributing Guidelines for more information.
 
+<div align='center'><a href='https://www.websitecounterfree.com'><img src='https://www.websitecounterfree.com/c.php?d=5&id=64815&s=6' border='0' alt='Free Website Counter'></a><br / ><small><a href='https://www.websitecounterfree.com' 
+
+
+
 
 
 
