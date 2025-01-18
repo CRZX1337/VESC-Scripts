@@ -22,13 +22,13 @@
 
 ; Secret Mode Configurations
 (def secret-enabled 1)
-(def secret-eco-speed (/ 47 3.6))
+(def secret-eco-speed (/ 27 3.6))
 (def secret-eco-current 0.8)
-(def secret-eco-watts 3000)
+(def secret-eco-watts 1200)
 (def secret-eco-fw 0)
-(def secret-drive-speed (/ 62 3.6))
+(def secret-drive-speed (/ 47 3.6))
 (def secret-drive-current 0.9)
-(def secret-drive-watts 4000)
+(def secret-drive-watts 1500)
 (def secret-drive-fw 0)
 (def secret-sport-speed (/ 1000 3.6))
 (def secret-sport-current 1.0)
@@ -41,21 +41,19 @@
 (def shu-unlock-cmd 0x7E)
 (def shu-status-cmd 0x01)
 
-; Xiaomi Protocol Constants
-(def xiaomi-header 0x55AA)
-(def xiaomi-tail 0x0A)
-(def xiaomi-lock-cmd 0x7D)
-(def xiaomi-unlock-cmd 0x7E)
-
-; Update UART setup for Xiaomi protocol
-(uart-start 115200 'half-duplex)
-(gpio-configure 'pin-rx 'pin-mode-in-pu)
-(def xiaomi-tx-buf (array-create 64))
-(def xiaomi-rx-buf (array-create 64))
-
 ; Import VESC Library
 (import "pkg@://vesc_packages/lib_code_server/code_server.vescpkg" 'code-server)
 (read-eval-program code-server)
+
+; UART Setup
+(uart-start 115200 'half-duplex)
+(gpio-configure 'pin-rx 'pin-mode-in-pu)
+(def tx-frame (array-create 20))
+(bufset-u16 tx-frame 0 0x55AA)
+(bufset-u16 tx-frame 2 0x0821)
+(bufset-u16 tx-frame 4 0x6400)
+(def uart-buf (array-create 64))
+(def shu-response (array-create 10))
 
 ; State Variables
 (def presstime (systime))
@@ -247,72 +245,23 @@
     }
 )
 
-; Xiaomi Protocol Functions
-(defun xiaomi-calculate-checksum (buffer len)
-    {
-        (var sum 0)
-        (looprange i 2 len
-            (set 'sum (+ sum (bufget-u8 buffer i))))
-        (bitwise-and sum 0xFF)
-    }
-)
-
-(defun xiaomi-send-packet (cmd data len)
-    {
-        (bufset-u16 xiaomi-tx-buf 0 xiaomi-header)
-        (bufset-u8 xiaomi-tx-buf 2 len)
-        (bufset-u8 xiaomi-tx-buf 3 cmd)
-        (if (> len 0)
-            (looprange i 0 len
-                (bufset-u8 xiaomi-tx-buf (+ i 4) (bufget-u8 data i))))
-        (bufset-u8 xiaomi-tx-buf (+ len 4) (xiaomi-calculate-checksum xiaomi-tx-buf (+ len 4)))
-        (bufset-u8 xiaomi-tx-buf (+ len 5) xiaomi-tail)
-        (uart-write xiaomi-tx-buf (+ len 6))
-    }
-)
-
-(defun xiaomi-handle-packet ()
-    {
-        (var cmd (bufget-u8 xiaomi-rx-buf 3))
-        (var len (bufget-u8 xiaomi-rx-buf 2))
-        
-        (cond 
-            ((= cmd xiaomi-lock-cmd)
-                {
-                    (set 'lock 1)
-                    (set 'feedback 1)
-                    (app-disable-output -1)
-                    (xiaomi-send-packet 0x01 0 0) ; ACK
-                })
-            ((= cmd xiaomi-unlock-cmd)
-                {
-                    (set 'lock 0)
-                    (set 'feedback 1)
-                    (app-disable-output 0)
-                    (xiaomi-send-packet 0x01 0 0) ; ACK
-                })
-        )
-    }
-)
-
-
 (defun read-frames()
     (loopwhile t
         {
-            (uart-read-bytes xiaomi-rx-buf 3 0)
-            (if (= (bufget-u16 xiaomi-rx-buf 0) xiaomi-header)
+            (uart-read-bytes uart-buf 3 0)
+            (if (= (bufget-u16 uart-buf 0) 0x55aa)
                 {
-                    (var len (bufget-u8 xiaomi-rx-buf 2))
-                    (if (and (> len 0) (< len 60))
+                    (var len (bufget-u8 uart-buf 2))
+                    (var crc len)
+                    (if (and (> len 0) (< len 60)) 
                         {
-                            (uart-read-bytes xiaomi-rx-buf (+ len 3) 0)
-                            (var checksum (xiaomi-calculate-checksum xiaomi-rx-buf (+ len 4)))
-                            (if (and 
-                                (= (bufget-u8 xiaomi-rx-buf (+ len 4)) checksum)
-                                (= (bufget-u8 xiaomi-rx-buf (+ len 5)) xiaomi-tail))
+                            (uart-read-bytes uart-buf (+ len 4) 0)
+                            (looprange i 0 len
+                                (set 'crc (+ crc (bufget-u8 uart-buf i))))
+                            (if (=(+(shl(bufget-u8 uart-buf (+ len 2))8) (bufget-u8 uart-buf (+ len 1))) (bitwise-xor crc 0xFFFF))
                                 {
-                                    (xiaomi-handle-packet)
-                                    (handle-frame (bufget-u8 xiaomi-rx-buf 1))
+                                    (handle-frame (bufget-u8 uart-buf 1))
+                                    (handle-shu-message (bufget-u8 uart-buf 1) len)
                                 }
                             )
                         }
@@ -322,7 +271,6 @@
         }
     )
 )
-
 
 (defun handle-frame(code)
     {
