@@ -1,5 +1,8 @@
 ; Xiaomi Scooter VESC Integration Script
 ; Mit Lock-/Unlock-Unterstützung und Debugging-Ausgaben
+; Importiere die VESC-Bibliothek
+(import "pkg@://vesc_packages/lib_code_server/code_server.vescpkg" 'code-server)
+(read-eval-program code-server)
 
 ; Konfigurationsvariablen
 (def software-adc 1)
