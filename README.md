@@ -13,9 +13,8 @@
 
   [![Dashboard Integration Badge](https://img.shields.io/badge/Dashboard-Integrated-brightgreen?style=flat-square)](https://github.com/CRzx1337/VESC-Scripts/#dashboard-integration)
   [![Customizable Features Badge](https://img.shields.io/badge/Customizable-Extensive-blue?style=flat-square)](https://github.com/CRzx1337/VESC-Scripts/#customizable-features)
-  [![License Badge](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE) <!-- Replace LICENSE with your actual license file name -->
+  [![License Badge](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
   [![Contributions Welcome Badge](https://img.shields.io/badge/Contributions-Welcome-orange?style=flat-square)](https://github.com/CRzx1337/VESC-Scripts/#contributing)
-  <!-- Add more badges as needed (e.g., last commit, language, etc.) -->
 
 </div>
 
@@ -116,13 +115,13 @@ We enthusiastically welcome contributions to this project!  Whether you're a sea
 * **Code Contributions:**  Fork this repository, implement your improvements or features, and submit a pull request.
 * **Documentation:**  Help us improve the documentation, making it clearer and more comprehensive for all users.
 
-**Please review our <a href="CONTRIBUTING.md">Contributing Guidelines</a> for more detailed information on how to contribute.** (Create a `CONTRIBUTING.md` file in your repository root if you haven't already.)
+**Please review our <a href="CONTRIBUTING.md">Contributing Guidelines</a> for more detailed information on how to contribute.**
 
 <br/>
 
 <h2 align="center" id="license">LICENSE</h2>
 
-This project is licensed under the **MIT License**. See the <a href="LICENSE"><code>LICENSE</code></a> file for more details. <!-- Replace LICENSE with your actual license file name -->
+This project is licensed under the **MIT License**. See the <a href="LICENSE"><code>LICENSE</code></a> file for more details.
 
 <br/>
 
