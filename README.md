@@ -9,10 +9,14 @@ Achieve seamless communication between the VESC and the original Xiaomi/Ninebot 
 
 <h2 align="center" >FEATURES</h2>
 
-- Cruise Control. (WIP)
+- Cruise Control.
 - Lock/Unlock with SHU. (WIP)
-- Automatic Shutdown if x-Minutes Standing. (WIP)
-
+- Always show battery percentage on idle.
+- Brake while standing showing 1 cell battery. (3.843v > 38 on dash)
+- Brake + Throttle while Standing shows distance traveled.
+- Cruise Control after 5 sec. (Enable in App settings > ADC > General > Buttons Inputs Enable Cruise Control)
+- MOSFET Temp as ERROR Code on dash. (RED NUMBERS)
+  
 <h2 align="center" >CUSTOMIZABLE FEATURES</h2>
 
 - Eco modes for extended range.
