@@ -1,10 +1,10 @@
 <h1 align="center" id="title">VESC SCRIPTS</h1>
 
 <p align="center">
-  <strong>Enhanced VESC Functionality for Xiaomi & Ninebot Scooters with Lisp Scripting</strong>
+  <strong>Level Up Your Xiaomi & Ninebot Scooter with VESC Scripts! 🚀</strong>
 </p>
 <p align="center">
-  Unlock advanced customization and integration for your electric scooter using these Lisp scripts designed for VESC motor controllers.
+  These scripts unlock some seriously cool extra stuff for your scooter when you're using a VESC motor controller. Think more customization and tighter integration than you get stock!
 </p>
 
 <br/>
@@ -12,7 +12,7 @@
 <div align="center">
 
   [![Dashboard Integration Badge](https://img.shields.io/badge/Dashboard-Integrated-brightgreen?style=flat-square)](https://github.com/CRzx1337/VESC-Scripts/#dashboard-integration)
-  [![Customizable Features Badge](https://img.shields.io/badge/Customizable-Extensive-blue?style=flat-square)](https://github.com/CRzx1337/VESC-Scripts/#customizable-features)
+  [![Customizable Features Badge](https://img.shields.io/badge/Customizable-Tons-blue?style=flat-square)](https://github.com/CRzx1337/VESC-Scripts/#customizable-features)
   [![License Badge](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
   [![Contributions Welcome Badge](https://img.shields.io/badge/Contributions-Welcome-orange?style=flat-square)](https://github.com/CRzx1337/VESC-Scripts/#contributing)
 
@@ -20,111 +20,114 @@
 
 <br/>
 
-This repository provides Lisp scripts to extend the capabilities of VESC (Vedder Electronic Speed Controller) motor controllers when used with Xiaomi and Ninebot electric scooters.  These scripts empower you to go beyond the limitations of standard VESC firmware, enabling deeper customization and seamless integration.
+Basically, this repo is for Lisp scripts that make your VESC motor controller way more awesome on Xiaomi and Ninebot scooters.  We're talking about going beyond what the regular VESC firmware can do, for deeper tweaks and better scooter smarts.
 
 <br/>
 
-<h2 align="center" id="dashboard-integration">DASHBOARD INTEGRATION</h2>
+<h2 align="center" id="dashboard-integration">DASHBOARD LOVE ❤️</h2>
 
 <p align="center">
-  Experience seamless communication between your VESC and the original Xiaomi/Ninebot scooter dashboard.
-  Display real-time crucial information directly where you need it:
+  Get your VESC talking smoothly with your original Xiaomi/Ninebot dashboard! See all the important stuff right where you're used to:
 </p>
 
 <ul align="center">
   <li>Speed</li>
-  <li>Battery Level (Percentage)</li>
+  <li>Battery Level (%)</li>
   <li>Riding Mode</li>
 </ul>
 
 <p align="center">
-  <strong>Plus, full support with the Scooter Hacking Utility (SHU) App!</strong>  Configure and monitor your VESC scripts directly through SHU for ultimate convenience.
+  <strong>Plus, it all works great with the Scooter Hacking Utility (SHU) App!</strong>  Configure and keep an eye on your VESC scripts super easily with SHU.
 </p>
 
 <br/>
 
-<h2 align="center" id="features">FEATURES</h2>
+<h2 align="center" id="features">FEATURES - What You Get! 😎</h2>
 
-This project delivers a range of enhancements to your scooter experience:
+Here's the cool stuff these scripts bring to your scooter:
 
-* **Cruise Control:** Enjoy effortless cruising at your desired speed. (Enable in App settings > ADC > General > Buttons Inputs Enable Cruise Control)
-* **Lock/Unlock with SHU (WIP):** Secure your scooter remotely using the Scooter Hacking Utility App. (Work In Progress - Stay tuned!)
-* **Always Show Battery Percentage on Idle:**  Keep track of your battery level even when stationary.
-* **Brake While Standing Battery Indication:**
-    *  Braking while stationary displays a single "cell" battery icon on the dashboard.
-    *  This visually represents a voltage threshold (e.g., 3.843v > 38 on dash).
-* **Brake + Throttle While Standing Distance Traveled:**  Access your trip distance information even when stationary by combining brake and throttle input.
-* **MOSFET Temperature Error Indication:**  Receive critical alerts!  MOSFET temperature is displayed as a distinct ERROR code (RED NUMBERS) on the dashboard, providing early warnings of potential overheating.
-
-<br/>
-
-<h2 align="center" id="customizable-features">CUSTOMIZABLE FEATURES</h2>
-
-Tailor your scooter's performance and behavior to your exact preferences:
-
-* **Eco Modes for Extended Range:** Implement multiple Eco modes with adjustable power limits to maximize battery life for longer rides.
-* **Speed Limiters for Safety:** Set custom speed limits for different riding scenarios or user profiles, enhancing safety and control.
-* **Custom Riding Modes:** Design unique riding modes with distinct acceleration, braking, and speed characteristics to match your riding style and environment.
-* **Advanced Diagnostics and Error Reporting:** Gain deeper insights into your scooter's health with enhanced diagnostic data and more informative error reporting on the dashboard.
+*   **Cruise Control:**  Set it and forget it! Cruise at the speed you want. (Enable in App settings > ADC > General > Buttons Inputs Enable Cruise Control)
+*   **Lock/Unlock with SHU (WIP):**  Lock and unlock your scooter remotely using the Scooter Hacking Utility App. (Still working on this one - coming soon!)
+*   **Always Show Battery Percentage on Idle:**  Battery percentage is always there on the dash, even when you're stopped.
+*   **Brake Battery Meter Magic:**
+    *   When you brake while standing still, the dash shows just one "cell" on the battery meter.
+    *   This is a visual thing to show a voltage level (like 3.843v > 38 on dash).
+*   **Standing Distance Display:** Brake + Throttle while stopped shows how far you've traveled. Handy!
+*   **MOSFET Temp ERROR Alerts:**  If your MOSFETs get too hot, you'll see a RED ERROR code on the dash (red numbers).  Early warning system!
+*   **⚡ Secret Speed Modes! 🤫**  Unlock hidden performance!
+    *   **How to Activate:** Double press the button WHILE holding both the brake and throttle levers.
+    *   **What it does:**  Unleashes higher speed and power settings for Eco, Drive, and Sport modes. Think "Ludicrous Speed" for your scooter! 😉
+    *   **Use with CAUTION:** These modes are powerful! Make sure your scooter can handle it and be safe!
 
 <br/>
 
-<h2 align="center" id="getting-started">GETTING STARTED</h2>
+<h2 align="center" id="customizable-features">MAKE IT YOUR OWN 🔧</h2>
 
-Ready to enhance your scooter? Here's a quick guide:
+You can tweak these scripts to get your scooter just how you like it:
 
-1. **Prerequisites:**
-    * VESC motor controller properly installed and configured on your Xiaomi or Ninebot scooter.
-    * Scooter Hacking Utility (SHU) App installed on your mobile device.
-    * Basic understanding of VESC configuration and Lisp scripting (helpful but not mandatory).
-
-2. **Installation:**
-    * **Download the scripts:** You can download the scripts directly from GitHub:
-        * **Xiaomi Scooters:** [xiaomi.lisp](https://github.com/CRZX1337/VESC-Scripts/blob/main/xiaomi.lisp)
-        * **Ninebot Scooters:** [ninebot.lisp](https://github.com/CRZX1337/VESC-Scripts/blob/main/ninebot.lisp)
-        * Alternatively, clone or download the entire repository to your local machine.
-    * **Copy to VESC:** Transfer the desired Lisp script to your VESC's file system (refer to your VESC documentation for instructions on file access).
-    * **Configure VESC:**  Load and configure the scripts within your VESC Tool or SHU App (depending on your VESC firmware and setup).
-    * **Customize (Optional):**  Modify the script parameters to adjust features to your liking (e.g., Eco mode power levels, speed limits).
-
-3. **Explore and Enjoy!**  Refer to the individual script documentation (if provided) for specific usage instructions and customization options.
+*   **Eco Modes for Max Range:**  Create different Eco modes to go further on a charge.
+*   **Speed Limits for Safety:** Set speed limits for different situations or riders.
+*   **Custom Ride Modes:**  Design your own riding modes with unique acceleration, braking, and speed feels.
+*   **Better Diagnostics:** Get more info and error messages on your dash to keep your scooter healthy.
 
 <br/>
 
-<h2 align="center" id="credits">CREDITS</h2>
+<h2 align="center" id="getting-started">GETTING STARTED - Let's Do This! 🚀</h2>
 
-This project is built upon and greatly inspired by the pioneering work of <strong>1Zuna</strong>, specifically the excellent <a href="https://github.com/m365fw/vesc_m365_dash"><code>vesc_m365_dash</code></a> project.  We extend our sincere gratitude for their foundational contributions to the VESC scooter ecosystem.
+Ready to upgrade your ride? Quick steps:
 
-<br/>
+1.  **Stuff You Need:**
+    *   VESC motor controller installed on your Xiaomi or Ninebot scooter (you probably know this!).
+    *   Scooter Hacking Utility (SHU) App on your phone.
+    *   A little bit of VESC and Lisp knowledge is helpful, but not a must-have.
 
-<h2 align="center" id="disclaimer">DISCLAIMER</h2>
+2.  **Install Time:**
+    *   **Grab the Scripts:** Download them right here:
+        *   **Xiaomi Scooters:** [xiaomi.lisp](https://github.com/CRZX1337/VESC-Scripts/blob/main/xiaomi.lisp)
+        *   **Ninebot Scooters:** [ninebot.lisp](https://github.com/CRZX1337/VESC-Scripts/blob/main/ninebot.lisp)
+        *   Or, grab the whole repo as a ZIP or clone it.
+    *   **VESC Transfer:**  Copy the script you want to your VESC (check your VESC docs for how to do files).
+    *   **VESC Setup:** Load and set up the script in VESC Tool or SHU App (depends on your VESC setup).
+    *   **Customize (Optional):**  Mess with the script settings to change things like Eco mode power, speed limits, etc.
 
-<strong>Proceed with Caution!</strong> Modifying your VESC and scooter firmware involves inherent risks. Incorrect modifications may void warranties and could potentially damage your hardware.
-
-<strong>By using these scripts, you acknowledge and accept full responsibility for any consequences, including but not limited to hardware damage, warranty voidance, or personal injury.</strong>
-
-**Always double-check your configurations, proceed step-by-step, and refer to reliable documentation before making any changes to your VESC or scooter.**
-
-<br/>
-
-<h2 align="center" id="contributing">CONTRIBUTING</h2>
-
-We enthusiastically welcome contributions to this project!  Whether you're a seasoned Lisp programmer or just starting out, your help is valuable.
-
-**How you can contribute:**
-
-* **Bug Reports:**  If you encounter issues, please open a detailed issue report describing the problem and steps to reproduce it.
-* **Feature Requests:**  Have a brilliant idea for a new feature?  Share your suggestions and let's discuss them!
-* **Code Contributions:**  Fork this repository, implement your improvements or features, and submit a pull request.
-* **Documentation:**  Help us improve the documentation, making it clearer and more comprehensive for all users.
-
-**Please review our <a href="CONTRIBUTING.md">Contributing Guidelines</a> for more detailed information on how to contribute.**
+3.  **Ride and Enjoy!** Check out any extra docs for the scripts if there are special instructions.
 
 <br/>
 
-<h2 align="center" id="license">LICENSE</h2>
+<h2 align="center" id="credits">CREDITS - Big Thanks! 🙏</h2>
 
-This project is licensed under the **MIT License**. See the <a href="LICENSE"><code>LICENSE</code></a> file for more details.
+Big shoutout to <strong>1Zuna</strong>! This project is built on top of their awesome <a href="https://github.com/m365fw/vesc_m365_dash"><code>vesc_m365_dash</code></a> project.  Massive thanks for the foundation!
+
+<br/>
+
+<h2 align="center" id="disclaimer">DISCLAIMER - Heads Up! ⚠️</h2>
+
+<strong>Listen up!</strong> Messing with your VESC and scooter firmware can be risky. You could void your warranty or even mess up your scooter if you're not careful.
+
+<strong>By using these scripts, you're doing it at your own risk.  If anything breaks, it's on you!</strong>
+
+**Double-check everything, go slowly, and read up on stuff before you change anything on your VESC or scooter.**
+
+<br/>
+
+<h2 align="center" id="contributing">CONTRIBUTING - Join In! 🤝</h2>
+
+Want to help make this even better? Contributions are super welcome!
+
+**Ways to Contribute:**
+
+*   **Bug Reports:** Find a bug? Let us know! Tell us exactly what happened and how to make it happen again.
+*   **Feature Ideas:**  Got a cool feature idea? Share it!
+*   **Code Help:** If you know Lisp and VESC stuff, jump in and help with code!
+*   **Docs Help:** Make the docs clearer and easier to understand.
+
+**Check out the <a href="CONTRIBUTING.md">Contributing Guidelines</a> for more info on how to contribute.**
+
+<br/>
+
+<h2 align="center" id="license">LICENSE - Open Source FTW! 🤘</h2>
+
+This project is under the **MIT License**.  See the <a href="LICENSE"><code>LICENSE</code></a> file for all the legal details.
 
 <br/>
 
