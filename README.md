@@ -79,8 +79,11 @@ Ready to enhance your scooter? Here's a quick guide:
     * Basic understanding of VESC configuration and Lisp scripting (helpful but not mandatory).
 
 2. **Installation:**
-    * **Download the scripts:** Clone or download this repository to your local machine.
-    * **Copy to VESC:** Transfer the desired Lisp scripts to your VESC's file system (refer to your VESC documentation for instructions on file access).
+    * **Download the scripts:** You can download the scripts directly from GitHub:
+        * **Xiaomi Scooters:** [xiaomi.lisp](https://github.com/CRZX1337/VESC-Scripts/blob/main/xiaomi.lisp)
+        * **Ninebot Scooters:** [ninebot.lisp](https://github.com/CRZX1337/VESC-Scripts/blob/main/ninebot.lisp)
+        * Alternatively, clone or download the entire repository to your local machine.
+    * **Copy to VESC:** Transfer the desired Lisp script to your VESC's file system (refer to your VESC documentation for instructions on file access).
     * **Configure VESC:**  Load and configure the scripts within your VESC Tool or SHU App (depending on your VESC firmware and setup).
     * **Customize (Optional):**  Modify the script parameters to adjust features to your liking (e.g., Eco mode power levels, speed limits).
 
@@ -126,6 +129,6 @@ This project is licensed under the **MIT License**. See the <a href="LICENSE"><c
 <br/>
 
 <div align='center'>
-  <a href='https://github.com/CRzx1337/VESC-Scripts/'><img src='https://www.websitecounterfree.com/c.php?d=5&id=64815&s=6' border='0' alt='Free Website Counter'></a><br />
+  <a href='https://github.com/CRZX1337/VESC-Scripts/'><img src='https://www.websitecounterfree.com/c.php?d=5&id=64815&s=6' border='0' alt='Free Website Counter'></a><br />
   <small>Website Counter</small>
 </div>
