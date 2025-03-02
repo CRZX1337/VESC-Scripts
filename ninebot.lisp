@@ -22,6 +22,21 @@
 (def sport-watts 2000)
 (def sport-fw 0)
 
+; Secret speed modes. To enable, press the button 2 times while holding break and throttle at the same time.
+(def secret-enabled 1)
+(def secret-eco-speed (/ 27 3.6))
+(def secret-eco-current 0.8)
+(def secret-eco-watts 1200)
+(def secret-eco-fw 0)
+(def secret-drive-speed (/ 47 3.6))
+(def secret-drive-current 0.9)
+(def secret-drive-watts 1500)
+(def secret-drive-fw 0)
+(def secret-sport-speed (/ 1000 3.6)) ; 1000 km/h easy
+(def secret-sport-current 1.0)
+(def secret-sport-watts 1500000)
+(def secret-sport-fw 10)
+
 ; -> Code starts here (DO NOT CHANGE ANYTHING BELOW THIS LINE IF YOU DON'T KNOW WHAT YOU ARE DOING)
 ; Load VESC CAN code serer
 (import "pkg@://vesc_packages/lib_code_server/code_server.vescpkg" 'code-server)
@@ -49,6 +64,7 @@
 (def speedmode 1)
 (def light 0)
 (def mode-changed 0)
+(def unlock 0) ; Added for secret modes
 
 ; timeout
 (define secs-left 0)
@@ -453,10 +469,11 @@
         (if (>= presses 2) ; double press
             {
                 (if (> (get-adc-decoded 1) min-adc-brake) ; if brake is pressed
-                    (if (and (> (get-adc-decoded 0) min-adc-thr))
+                    (if (and (= secret-enabled 1) (> (get-adc-decoded 0) min-adc-thr)) ; Secret mode activation condition
                         {
-                            (beep 1 2)
-                            (apply-mode)
+                            (set 'unlock (bitwise-xor unlock 1)) ; Toggle secret mode
+                            (beep 1 2) ; Beep twice for mode change
+                            (apply-mode) ; Apply the new mode
                         }
                         {
                             (apply-mode)
@@ -509,12 +526,24 @@
 ; Speed mode implementation
 
 (defun apply-mode()
-    (if (= speedmode 1)
-        (configure-speed drive-speed drive-watts drive-current drive-fw)
-        (if (= speedmode 2)
-            (configure-speed eco-speed eco-watts eco-current eco-fw)
-            (if (= speedmode 4)
-                (configure-speed sport-speed sport-watts sport-current sport-fw)
+    (if (= unlock 0) ; Normal speed modes
+        (if (= speedmode 1)
+            (configure-speed drive-speed drive-watts drive-current drive-fw)
+            (if (= speedmode 2)
+                (configure-speed eco-speed eco-watts eco-current eco-fw)
+                (if (= speedmode 4)
+                    (configure-speed sport-speed sport-watts sport-current sport-fw)
+                )
+            )
+        )
+        ; Secret speed modes (unlock = 1)
+        (if (= speedmode 1)
+            (configure-speed secret-drive-speed secret-drive-watts secret-drive-current secret-drive-fw)
+            (if (= speedmode 2)
+                (configure-speed secret-eco-speed secret-eco-watts secret-eco-current secret-eco-fw)
+                (if (= speedmode 4)
+                    (configure-speed secret-sport-speed secret-sport-watts secret-sport-current secret-sport-fw)
+                )
             )
         )
     )
